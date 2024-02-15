@@ -1,4 +1,4 @@
-package mohamednasser.projects;
+package mohamednasser.projects.webserver;
 
 import mohamednasser.projects.http.HttpException;
 import mohamednasser.projects.http.HttpParser;
