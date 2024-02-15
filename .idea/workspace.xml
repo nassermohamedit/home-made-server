@@ -5,17 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b96891f-5910-4705-bb8b-8090c7cd2313" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/ClientHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/HttpServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/http/HttpException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/http/HttpMethod.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/http/HttpParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/http/HttpRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/http/HttpResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/http/HttpStatusCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/mohamednasser/projects/http/HttpParserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/mohamednasser/projects/http/HttpTestUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/HttpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/HttpServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/mohamednasser/projects/webserver/BytesTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +28,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -32,21 +36,35 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2cE8fwHdNYMd2acL68vSPpo1smj" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.Main.executor": "Run",
+    "JUnit.HttpParserTest.headersParsingTest.executor": "Run",
+    "JUnit.HttpParserTest.ignoreConsecutiveWhitespaceTest.executor": "Run",
+    "JUnit.HttpParserTest.longTargetUriTest.executor": "Run",
+    "JUnit.HttpParserTest.missingMethodTest.executor": "Run",
+    "JUnit.HttpParserTest.noHeadersHttpRequestTest.executor": "Run",
+    "JUnit.HttpParserTest.requestLineParser.executor": "Run",
+    "JUnit.HttpParserTest.spaceInTargetUriTest.executor": "Run",
+    "JUnit.HttpParserTest.unimplementedMethodTest.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -54,25 +72,111 @@
     "kotlin-language-version-configured": "true"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="mohamednasser.projects.Main" />
-      <module name="home-made-http-server" />
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="mohamednasser.projects.http" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="mohamednasser.projects.http" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.HttpParserTest.longTargetUriTest">
+    <configuration name="HttpParserTest.ignoreConsecutiveWhitespaceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="home-made-webserver" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="mohamednasser.projects.*" />
+          <option name="PATTERN" value="mohamednasser.projects.http.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="mohamednasser.projects.http" />
+      <option name="MAIN_CLASS_NAME" value="mohamednasser.projects.http.HttpParserTest" />
+      <option name="METHOD_NAME" value="ignoreConsecutiveWhitespaceTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HttpParserTest.longTargetUriTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="home-made-webserver" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="mohamednasser.projects.http.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="mohamednasser.projects.http" />
+      <option name="MAIN_CLASS_NAME" value="mohamednasser.projects.http.HttpParserTest" />
+      <option name="METHOD_NAME" value="longTargetUriTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HttpParserTest.missingMethodTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="home-made-webserver" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="mohamednasser.projects.http.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="mohamednasser.projects.http" />
+      <option name="MAIN_CLASS_NAME" value="mohamednasser.projects.http.HttpParserTest" />
+      <option name="METHOD_NAME" value="missingMethodTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HttpParserTest.spaceInTargetUriTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="home-made-webserver" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="mohamednasser.projects.http.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="mohamednasser.projects.http" />
+      <option name="MAIN_CLASS_NAME" value="mohamednasser.projects.http.HttpParserTest" />
+      <option name="METHOD_NAME" value="spaceInTargetUriTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HttpParserTest.unimplementedMethodTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="home-made-webserver" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="mohamednasser.projects.http.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="mohamednasser.projects.http" />
+      <option name="MAIN_CLASS_NAME" value="mohamednasser.projects.http.HttpParserTest" />
+      <option name="METHOD_NAME" value="unimplementedMethodTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.HttpParserTest.longTargetUriTest" />
+        <item itemvalue="JUnit.HttpParserTest.spaceInTargetUriTest" />
+        <item itemvalue="JUnit.HttpParserTest.unimplementedMethodTest" />
+        <item itemvalue="JUnit.HttpParserTest.missingMethodTest" />
+        <item itemvalue="JUnit.HttpParserTest.ignoreConsecutiveWhitespaceTest" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-openjdk-21.0.1-4caba194b151-e47b9c39" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -84,5 +188,8 @@
       <updated>1707665486405</updated>
     </task>
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
