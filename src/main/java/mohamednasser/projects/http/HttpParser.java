@@ -121,7 +121,7 @@ public final class HttpParser {
     private void visitBody(InputStreamReader isr, HttpRequest request) {
     }
 
-    public void visitHeaderSection(InputStreamReader isr, HttpRequest request) throws IOException, HttpException {
+    private void visitHeaderSection(InputStreamReader isr, HttpRequest request) throws IOException, HttpException {
         Map<String, String> headers = new HashMap<>();
         boolean endOfHeaderSection = false;
         while (!endOfHeaderSection) {
@@ -136,7 +136,7 @@ public final class HttpParser {
         headers.forEach(request::addHeader);
     }
 
-    public void visitHeader(InputStreamReader isr, Map<String, String> headers) throws IOException, HttpException {
+     private void visitHeader(InputStreamReader isr, Map<String, String> headers) throws IOException, HttpException {
        int c = isr.read();
        if (c == -1 || c == LF || c == CR && (c = isr.read()) != LF)
            throwHttpException(HttpStatusCode.CLIENT_ERROR_400_BAD_REQUEST);

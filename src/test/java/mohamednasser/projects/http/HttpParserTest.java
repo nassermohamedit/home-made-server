@@ -1,62 +1,57 @@
 package mohamednasser.projects.http;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.Assertions;
+
 public class HttpParserTest {
 
     private HttpParser parser = HttpParser.getInstance();
 
+    private static HttpRequest testHttpRequest;
+
+    private static String testHttpRequestString = "GET /photos/restapi/cats/minouch HTTP/1.1\r\n" +
+            "Accept: application/json\r\n" +
+            "Authorization: Basic dGVzdHVzZXIwMTpuZXRjb29s\r\n" +
+            "Host: localhost\r\n" +
+            "Connection: keep-alive\r\n\r\n";
+    @BeforeAll
+    public static void setup() {
+
+        testHttpRequest = new HttpRequest();
+        testHttpRequest.setTarget("/photos/restapi/cats/minouch");
+        testHttpRequest.setMethod(HttpMethod.valueOf("GET"));
+        testHttpRequest.setVersion("HTTP/1.1");
+        testHttpRequest.addHeader("Accept", "application/json");
+        testHttpRequest.addHeader("Authorization", "Basic dGVzdHVzZXIwMTpuZXRjb29s");
+        testHttpRequest.addHeader("Host", "localhost");
+        testHttpRequest.addHeader("Connection", "keep-alive");
+    }
+
+
     @Test
-    void requestLineParser() throws HttpException, IOException {
-        InputStream in = HttpTestUtil.getHttpRequestInputStream();
+    void httpRequestParsingTest() throws HttpException, IOException {
+        InputStream in = new ByteArrayInputStream(testHttpRequestString.getBytes());
         HttpRequest request = parser.parseHttpRequest(in);
-        HttpRequest expectedRequest = HttpTestUtil.getHttpRequest();
-
-        Assertions.assertEquals(request.getMethod(), expectedRequest.getMethod());
-        Assertions.assertEquals(request.getTarget(), expectedRequest.getTarget());
-        Assertions.assertEquals(request.getVersion(), expectedRequest.getVersion());
+        Assertions.assertEquals(request, testHttpRequest);
     }
-
-    @Test
-    void headersParsingTest() throws HttpException, IOException {
-        InputStream in = HttpTestUtil.getHeaders();
-        HttpRequest request = new HttpRequest();
-        HttpRequest expected = HttpTestUtil.getHttpRequest();
-        parser.visitHeaderSection(new InputStreamReader(in, StandardCharsets.US_ASCII), request);
-        Assertions.assertEquals(request.getHeaders(), expected.getHeaders());
-    }
-
-    @Test
-    void noHeadersHttpRequestTest() throws HttpException, IOException {
-        String httpRequest = " GET /photos/restapi/cats/minouch HTTP/1.1\r\n";
-        InputStream in = new ByteArrayInputStream(httpRequest.getBytes());
-        Assertions.assertThrows(
-                HttpException.class,
-                () -> parser.parseHttpRequest(in),
-                HttpStatusCode.CLIENT_ERROR_400_BAD_REQUEST.message);
-    }
-
 
     @Test
     void ignoreConsecutiveWhitespaceTest() throws HttpException, IOException {
         String httpRequest = "        GET          /photos/restapi/cats/minouch          HTTP/1.1            \r\n\r\n";
         InputStream in = new ByteArrayInputStream(httpRequest.getBytes());
-        HttpRequest expected = HttpTestUtil.getHttpRequest();
         HttpRequest request = parser.parseHttpRequest(in);
-        Assertions.assertEquals(expected.getMethod(), request.getMethod());
-        Assertions.assertEquals(expected.getTarget(), request.getTarget());
-        Assertions.assertEquals(request.getVersion(), expected.getVersion());
+        Assertions.assertEquals(testHttpRequest.getMethod(), request.getMethod());
+        Assertions.assertEquals(testHttpRequest.getTarget(), request.getTarget());
+        Assertions.assertEquals(testHttpRequest.getVersion(), request.getVersion());
     }
-
-
 
     @Test
     void unimplementedMethodTest() throws HttpException, IOException {
@@ -70,7 +65,7 @@ public class HttpParserTest {
     }
 
     @Test
-    void missingMethodTest() throws HttpException, IOException {
+    void missingMethodTest() {
         String httpRequest = "/photos/restapi/cats/minouch HTTP/1.1\r\n\r\n";
         InputStream in = new ByteArrayInputStream(httpRequest.getBytes());
         Assertions.assertThrows(

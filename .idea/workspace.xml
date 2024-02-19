@@ -5,20 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b96891f-5910-4705-bb8b-8090c7cd2313" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/http/HttpException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/http/HttpMethod.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/http/HttpParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/http/HttpRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/http/HttpResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/http/HttpStatusCode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/mohamednasser/projects/http/HttpParserTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/mohamednasser/projects/http/HttpTestUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/HttpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/HttpServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/mohamednasser/projects/webserver/BytesTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/http/HttpParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/http/HttpParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/http/HttpRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mohamednasser/projects/http/HttpRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/mohamednasser/projects/http/HttpParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/mohamednasser/projects/http/HttpParserTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +54,7 @@
     "JUnit.HttpParserTest.noHeadersHttpRequestTest.executor": "Run",
     "JUnit.HttpParserTest.requestLineParser.executor": "Run",
     "JUnit.HttpParserTest.spaceInTargetUriTest.executor": "Run",
+    "JUnit.HttpParserTest.stupidTest.executor": "Run",
     "JUnit.HttpParserTest.unimplementedMethodTest.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -80,7 +71,22 @@
       <recent name="mohamednasser.projects.http" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.HttpParserTest.longTargetUriTest">
+  <component name="RunManager" selected="JUnit.HttpParserTest">
+    <configuration name="HttpParserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="home-made-webserver" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="mohamednasser.projects.http.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="mohamednasser.projects.http" />
+      <option name="MAIN_CLASS_NAME" value="mohamednasser.projects.http.HttpParserTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HttpParserTest.ignoreConsecutiveWhitespaceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="home-made-webserver" />
       <extension name="coverage">
@@ -92,22 +98,6 @@
       <option name="PACKAGE_NAME" value="mohamednasser.projects.http" />
       <option name="MAIN_CLASS_NAME" value="mohamednasser.projects.http.HttpParserTest" />
       <option name="METHOD_NAME" value="ignoreConsecutiveWhitespaceTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HttpParserTest.longTargetUriTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="home-made-webserver" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="mohamednasser.projects.http.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="mohamednasser.projects.http" />
-      <option name="MAIN_CLASS_NAME" value="mohamednasser.projects.http.HttpParserTest" />
-      <option name="METHOD_NAME" value="longTargetUriTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -129,7 +119,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HttpParserTest.spaceInTargetUriTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HttpParserTest.noHeadersHttpRequestTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="home-made-webserver" />
       <extension name="coverage">
         <pattern>
@@ -139,7 +129,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="mohamednasser.projects.http" />
       <option name="MAIN_CLASS_NAME" value="mohamednasser.projects.http.HttpParserTest" />
-      <option name="METHOD_NAME" value="spaceInTargetUriTest" />
+      <option name="METHOD_NAME" value="noHeadersHttpRequestTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -163,11 +153,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.HttpParserTest.longTargetUriTest" />
-        <item itemvalue="JUnit.HttpParserTest.spaceInTargetUriTest" />
-        <item itemvalue="JUnit.HttpParserTest.unimplementedMethodTest" />
+        <item itemvalue="JUnit.HttpParserTest" />
         <item itemvalue="JUnit.HttpParserTest.missingMethodTest" />
+        <item itemvalue="JUnit.HttpParserTest.unimplementedMethodTest" />
         <item itemvalue="JUnit.HttpParserTest.ignoreConsecutiveWhitespaceTest" />
+        <item itemvalue="JUnit.HttpParserTest.noHeadersHttpRequestTest" />
       </list>
     </recent_temporary>
   </component>
