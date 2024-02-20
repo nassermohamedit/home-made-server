@@ -13,26 +13,28 @@ import org.junit.jupiter.api.Assertions;
 
 public class HttpParserTest {
 
-    private HttpParser parser = HttpParser.getInstance();
+    private final HttpParser parser = HttpParser.getInstance();
 
     private static HttpRequest testHttpRequest;
 
-    private static String testHttpRequestString = "GET /photos/restapi/cats/minouch HTTP/1.1\r\n" +
+    private static String testHttpRequestString =
+            "GET /photos/restapi/cats/minouch HTTP/1.1\r\n" +
             "Accept: application/json\r\n" +
             "Authorization: Basic dGVzdHVzZXIwMTpuZXRjb29s\r\n" +
             "Host: localhost\r\n" +
             "Connection: keep-alive\r\n\r\n";
     @BeforeAll
-    public static void setup() {
+    public static void setup() throws HttpException {
 
-        testHttpRequest = new HttpRequest();
-        testHttpRequest.setTarget("/photos/restapi/cats/minouch");
-        testHttpRequest.setMethod(HttpMethod.valueOf("GET"));
-        testHttpRequest.setVersion("HTTP/1.1");
-        testHttpRequest.addHeader("Accept", "application/json");
-        testHttpRequest.addHeader("Authorization", "Basic dGVzdHVzZXIwMTpuZXRjb29s");
-        testHttpRequest.addHeader("Host", "localhost");
-        testHttpRequest.addHeader("Connection", "keep-alive");
+        testHttpRequest = new HttpRequest.Builder()
+                .setTarget("/photos/restapi/cats/minouch")
+                .setMethod("GET")
+                .setVersion("HTTP/1.1")
+                .addHeader("Accept", "application/json")
+                .addHeader("Authorization", "Basic dGVzdHVzZXIwMTpuZXRjb29s")
+                .addHeader("Host", "localhost")
+                .addHeader("Connection", "keep-alive")
+                .build();
     }
 
 
@@ -45,7 +47,8 @@ public class HttpParserTest {
 
     @Test
     void ignoreConsecutiveWhitespaceTest() throws HttpException, IOException {
-        String httpRequest = "        GET          /photos/restapi/cats/minouch          HTTP/1.1            \r\n\r\n";
+        String httpRequest = "        GET          /photos/restapi/cats/minouch          HTTP/1.1            \r\n" +
+                "Host: localhost\r\n\r\n";
         InputStream in = new ByteArrayInputStream(httpRequest.getBytes());
         HttpRequest request = parser.parseHttpRequest(in);
         Assertions.assertEquals(testHttpRequest.getMethod(), request.getMethod());
@@ -60,7 +63,7 @@ public class HttpParserTest {
         Assertions.assertThrows(
                 HttpException.class,
                 () -> parser.parseHttpRequest(in),
-                HttpStatusCode.SERVER_ERROR_501_NOT_IMPLEMENTED.message
+                HttpStatusCode.SERVER_ERROR_501.message
         );
     }
 
@@ -71,10 +74,9 @@ public class HttpParserTest {
         Assertions.assertThrows(
                 HttpException.class,
                 () -> parser.parseHttpRequest(in),
-                HttpStatusCode.SERVER_ERROR_501_NOT_IMPLEMENTED.message
+                HttpStatusCode.SERVER_ERROR_501.message
         );
     }
-
 
     @Test
     void spaceInTargetUriTest() throws HttpException, IOException {
@@ -83,7 +85,7 @@ public class HttpParserTest {
         Assertions.assertThrows(
                 HttpException.class,
                 () -> parser.parseHttpRequest(in),
-                HttpStatusCode.CLIENT_ERROR_400_BAD_REQUEST.message
+                HttpStatusCode.CLIENT_ERROR_400.message
         );
     }
 
@@ -92,13 +94,12 @@ public class HttpParserTest {
         byte[] bytes = new byte[8000];
         Arrays.fill(bytes, (byte) 'm');
         String longTargetUri = "/" + new String(bytes, StandardCharsets.US_ASCII);
-
         String httpRequest = "GET " + longTargetUri + " HTTP/1.1\r\n\r\n";
         InputStream in = new ByteArrayInputStream(httpRequest.getBytes());
         Assertions.assertThrows(
                 HttpException.class,
                 () -> parser.parseHttpRequest(in),
-                HttpStatusCode.CLIENT_ERROR_414_BAD_REQUEST.message
+                HttpStatusCode.CLIENT_ERROR_414.message
         );
     }
 
