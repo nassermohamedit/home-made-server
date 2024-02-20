@@ -62,6 +62,17 @@ public class HttpRequest extends HttpMessage{
     }
 
     @Override
+    public String toString() {
+        return method + " " + target + " " + version + "\r\n" +
+                headers.entrySet()
+                        .stream()
+                        .map(e -> e.getKey() + ": " + e.getValue() + "\r\n")
+                        .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append) +
+                "\r\n";
+    }
+
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof HttpRequest r)) return false;

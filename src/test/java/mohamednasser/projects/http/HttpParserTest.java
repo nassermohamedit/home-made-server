@@ -17,12 +17,12 @@ public class HttpParserTest {
 
     private static HttpRequest testHttpRequest;
 
-    private static String testHttpRequestString =
-            "GET /photos/restapi/cats/minouch HTTP/1.1\r\n" +
-            "Accept: application/json\r\n" +
+    private static String testHttpRequestString = "GET /photos/restapi/cats/minouch HTTP/1.1\r\n" +
             "Authorization: Basic dGVzdHVzZXIwMTpuZXRjb29s\r\n" +
-            "Host: localhost\r\n" +
-            "Connection: keep-alive\r\n\r\n";
+            "Accept: application/json\r\n" +
+            "Connection: keep-alive\r\n" +
+            "Host: localhost\r\n\r\n";
+
     @BeforeAll
     public static void setup() throws HttpException {
 
@@ -103,4 +103,9 @@ public class HttpParserTest {
         );
     }
 
+
+    @Test
+    void httpRequestToStringTest() {
+        Assertions.assertEquals(testHttpRequest.toString(), testHttpRequestString);
+    }
 }
