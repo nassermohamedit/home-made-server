@@ -22,7 +22,8 @@ public class ClientHandler implements Runnable {
         try {
             HttpParser parser = HttpParser.getInstance();
             HttpRequest request = parser.parseHttpRequest(clientSocket.getInputStream());
-            String body = "<html><head><title>Home Made Server</title></head><body>request received</body></html>";
+            System.out.println(request);
+            String body = request.toString();
             final String CLRF = "\n\r";
             String answer = "HTTP/1.1 200 OK" + CLRF +
                     "Content-Length: " + body.getBytes().length + CLRF +
@@ -31,9 +32,7 @@ public class ClientHandler implements Runnable {
                     CLRF + CLRF;
             clientSocket.getOutputStream().write(answer.getBytes());
             clientSocket.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (HttpException e) {
+        } catch (IOException | HttpException e) {
             throw new RuntimeException(e);
         }
     }
