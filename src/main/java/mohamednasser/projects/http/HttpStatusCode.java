@@ -4,7 +4,9 @@ public enum HttpStatusCode {
 
     // Client Errors
     CLIENT_ERROR_400(400, "Bad Request"),
-    CLIENT_ERROR_401_METHOD(401, "Method Not Allowed"),
+    CLIENT_ERROR_401(401, "Method Not Allowed"),
+    CLIENT_ERROR_404(414, "Not Found"),
+    CLIENT_ERROR_406(406, "Not Acceptable"),
     CLIENT_ERROR_414(414, "URI Too Long"),
 
     // Server Errors
