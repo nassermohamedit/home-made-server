@@ -10,6 +10,7 @@ import java.net.Socket;
 import java.net.SocketAddress;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -18,7 +19,10 @@ public final class HttpServer {
     private static final Logger LOGGER = LoggerFactory.getLogger(HttpServer.class);
 
     private final SocketAddress address;
+
     private final Path webroot;
+
+    private Map<Path, Map<String, Object>> resources;
 
     private final ServerSocket socket;
 
@@ -34,22 +38,23 @@ public final class HttpServer {
         this.socket = new ServerSocket();
         this.socket.bind(address);
         this.executor = Executors.newCachedThreadPool(Thread.ofVirtual().factory());
+        this.resources = new ResourceInitializer(webroot).initialize();
     }
 
     public static HttpServer createInstance(SocketAddress address) throws IOException {
-        return new HttpServer(address, Paths.get("."));
+        return createInstance(address, Paths.get(".").toAbsolutePath());
     }
 
     public static HttpServer createInstance(Path webroot) throws IOException {
-        return new HttpServer(new InetSocketAddress(0), webroot);
+        return createInstance(new InetSocketAddress(0), webroot);
     }
 
     public static HttpServer createInstance(SocketAddress address, Path webroot) throws IOException {
-        return new HttpServer(new InetSocketAddress(0), webroot);
+        return new HttpServer(address, webroot);
     }
 
     public static HttpServer createInstance() throws IOException {
-        return new HttpServer(new InetSocketAddress(0), Paths.get("."));
+        return createInstance(new InetSocketAddress(0), Paths.get("."));
     }
 
     public void run() throws IOException {
@@ -60,10 +65,13 @@ public final class HttpServer {
         while (!closed) {
             Socket clientSocket = this.socket.accept();
             LOGGER.info("Connection accepted: " + clientSocket.getInetAddress());
-            executor.submit(new ClientHandler(clientSocket));
+            executor.submit(new ClientHandler(clientSocket, resources, this));
         }
     }
 
+    public Path getWebroot() {
+        return webroot;
+    }
 
     public void close() throws IOException {
         closed = true;
